@@ -26,7 +26,7 @@
                     :weight 'bold
                     :width 'normal)
 
-;; Use Evil evil-magit modes.
+;; Use Evil and evil-magit modes.
 (require 'evil)
 (evil-mode 1)
 (require 'evil-magit)
@@ -41,6 +41,14 @@
 
 ;; Open new buffers in new windows
 (setq pop-up-frames t)
+
+;; Typescript config, based on the Tide package
+(load-subconfig "typescript.el")
+
+;; Initialize exec-path-from shell package:
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 
 ;; Don't edit below this line:
 ;; ---------------------------

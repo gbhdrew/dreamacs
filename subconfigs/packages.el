@@ -18,6 +18,9 @@
 ;; such as counsel-M-x and counsel-find-file. 
 (use-package counsel :ensure t)
 
+;; Add magit
+(use-package magit :ensure t)
+
 ;; Add evil mode, and evil-magit.
 (use-package evil :ensure t)
 (use-package evil-magit :ensure t)
@@ -60,11 +63,18 @@
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
-;; Add magit
-(use-package magit :ensure t)
+;; Typescript support with Tide, and company auto-completion
+(use-package tide :ensure t)
+(use-package company :ensure t)
+
+;; library to ensure environment variables inside Emacs
+;; look the same as in the user's shell.
+(use-package exec-path-from-shell :ensure t)
 
 
 ;; Some helper functions
+;; ---------------------
+
 (defun switch-to-previous-buffer ()
   "Switch to previously open buffer.
 Repeated invocations toggle between the two most recently open buffers."
