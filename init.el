@@ -1,10 +1,11 @@
 ;; Initially based on this guide:
 ;; https://sam217pa.github.io/2016/09/02/how-to-build-your-own-spacemacs/
 
-;; Function to load subconfig files:
 (setq config-dir "~/.emacs.d")
-(setq subconfigs-dir (concat config-dir "/subconfigs"))
 (setq config-path (concat config-dir "/init.el"))
+
+;; Function to load subconfig files:
+(setq subconfigs-dir (concat config-dir "/subconfigs"))
 (defun load-subconfig (name) 
   (load-file (concat subconfigs-dir "/" name)))
 
@@ -25,9 +26,10 @@
                     :weight 'bold
                     :width 'normal)
 
-;; Use Evil mode.
+;; Use Evil evil-magit modes.
 (require 'evil)
 (evil-mode 1)
+(require 'evil-magit)
 
 ;; Use ESC instead of C-g for `keyboard-quit`.
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
@@ -37,6 +39,8 @@
           (lambda ()
             (dired-hide-details-mode)))
 
+;; Open new buffers in new windows
+(setq pop-up-frames t)
 
 ;; Don't edit below this line:
 ;; ---------------------------

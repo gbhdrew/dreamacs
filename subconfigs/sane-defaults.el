@@ -11,6 +11,7 @@
 (setq sentence-end-double-space nil)  ; Don't use two spaces after a period. 
 (setq default-fill-column 100)	      ; Toggle text-wrapping at the 100th character.
 (setq initial-scratch-message "Welcome to Dreamacs") ;; Print a default message in the empty scratch buffer opened at startup.
+
 ;; Disable the menu and tool bars.
 (menu-bar-mode -1)
 (tool-bar-mode -1)

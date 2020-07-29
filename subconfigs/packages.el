@@ -18,8 +18,9 @@
 ;; such as counsel-M-x and counsel-find-file. 
 (use-package counsel :ensure t)
 
-;; Add evil mode.
+;; Add evil mode, and evil-magit.
 (use-package evil :ensure t)
+(use-package evil-magit :ensure t)
 
 ;; Use the 'general' package to assign keybindings.
 (use-package general :ensure t
@@ -34,7 +35,7 @@
       "'" 'eshell
       "b" 'ivy-switch-buffer
       "/" 'counsel-git-grep   ; Find a string in the current git project.
-      "TAB" 'switch-to-other-buffer
+      "TAB" 'switch-to-previous-buffer
       "SPC" 'avy-goto-word-or-subword-1
       "ad" 'dired-jump
       "f"   '(:ignore t :which-key "files")
@@ -42,6 +43,8 @@
       "fr" 'counsel-recentf   ; Find recently-edited files.
       "p"   '(:ignore t :which-key "project")
       "pf" 'counsel-git     
+      ;; magit
+      "gs" 'magit-status-here
   ))
 
 (use-package which-key :ensure t)
@@ -56,3 +59,14 @@
   :config
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+;; Add magit
+(use-package magit :ensure t)
+
+
+;; Some helper functions
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
