@@ -41,9 +41,11 @@
       "TAB" 'switch-to-previous-buffer
       "SPC" 'avy-goto-word-or-subword-1
       "ad" 'dired-jump
+      ;; files
       "f"   '(:ignore t :which-key "files")
       "ff" 'counsel-find-file ; Find a file using Ivy.
       "fr" 'counsel-recentf   ; Find recently-edited files.
+      ;; projects
       "p"   '(:ignore t :which-key "project")
       "pf" 'counsel-git     
       ;; magit
@@ -71,6 +73,8 @@
 ;; look the same as in the user's shell.
 (use-package exec-path-from-shell :ensure t)
 
+;; web-mode for html, tsx files
+(use-package web-mode :ensure t)
 
 ;; Some helper functions
 ;; ---------------------

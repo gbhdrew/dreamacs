@@ -49,6 +49,11 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+;; Registers
+(set-register ?e (cons 'file config-dir))
+
+;; Start a server
+(server-start)
 
 ;; Don't edit below this line:
 ;; ---------------------------
