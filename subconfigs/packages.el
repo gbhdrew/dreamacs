@@ -76,6 +76,9 @@
 ;; web-mode for html, tsx files
 (use-package web-mode :ensure t)
 
+;; Use prettier, for typescript auto-formatting.
+(use-package prettier :ensure t)
+
 ;; Some helper functions
 ;; ---------------------
 

@@ -3,4 +3,6 @@ backups
 .cache
 elpa
 eshell
+tramp
 transient
+url

@@ -11,9 +11,7 @@
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
-;; formats the buffer before saving
-;; (add-hook 'before-save-hook 'tide-format-before-save)
-
+;; initialize tide when using typescript-mode and js-mode
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 ;; Support for .tsx files
@@ -25,3 +23,16 @@
               (setup-tide-mode))))
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;; Activate prettier when using typescript-mode.
+(add-hook 'typescript-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook #'(lambda ()
+                            (enable-minor-mode
+                             '("\\.tsx?\\'" . prettier-js-mode))))
+
+;; Use prettier before-safe-hook for typescript-mode.
+(defun typescript-prettier-on-save()
+  "Run prettier formatting for typescript-mode on save"
+  (when (eq major-mode 'typescript-mode)) (prettier-prettify))
+
+(add-hook 'before-save-hook 'typescript-prettier-on-save)

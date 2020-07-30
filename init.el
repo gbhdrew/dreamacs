@@ -1,6 +1,3 @@
-;; Initially based on this guide:
-;; https://sam217pa.github.io/2016/09/02/how-to-build-your-own-spacemacs/
-
 (setq config-dir "~/.emacs.d")
 (setq config-path (concat config-dir "/init.el"))
 
@@ -55,6 +52,7 @@
 ;; Start a server
 (server-start)
 
+
 ;; Don't edit below this line:
 ;; ---------------------------
 
@@ -66,7 +64,7 @@
  '(custom-safe-themes
    (quote
     ("f3f85a358dc6c3642bc6e0ca335c8909a2210814e5a7d4301993822bbf7db4e6" default)))
- '(package-selected-packages (quote (use-package general bind-key))))
+ '(package-selected-packages (quote (prettier use-package general bind-key))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
