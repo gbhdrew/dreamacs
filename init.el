@@ -12,6 +12,9 @@
 ;; Load and initialize packages.
 (load-subconfig "packages.el")
 
+;; use sbcl as Common Lisp implementation:
+(setq inferior-lisp-program "sbcl")
+
 ;; Set custom theme and load path:
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") 
 (load-theme 'smyx t)

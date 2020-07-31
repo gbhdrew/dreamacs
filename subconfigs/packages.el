@@ -58,6 +58,9 @@
   ;; These commands trigger the loading of the 'avy' package:
   :commands (avy-goto-word-1))
 
+;; add SLIME repl for Lisp
+(use-package slime :ensure t)
+
 ;; Display dired subtrees with tab key
 (use-package dired-subtree :ensure t
   :after dired
