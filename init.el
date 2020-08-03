@@ -12,7 +12,7 @@
 ;; Load and initialize packages.
 (load-subconfig "packages.el")
 
-(load (expand-file-name "~/quicklisp/slime-helper.el"))
+;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
 ;; use sbcl as Common Lisp implementation:
 (setq inferior-lisp-program "sbcl")
 
