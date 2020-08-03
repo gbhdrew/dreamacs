@@ -52,10 +52,15 @@
 
 ;; Registers
 (set-register ?e (cons 'file config-dir))
-(set-register ?l (cons 'file "~/sync/code/lisp"))
+;; work org file (not in this repo)
+(set-register ?l (cons 'file "~/sync/orgs/lb.org"))
 
 ;; Start a server
 (server-start)
+
+;; set chrome as default browser for external links
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
 
 
 ;; Don't edit below this line:
