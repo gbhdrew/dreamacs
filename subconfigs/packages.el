@@ -38,9 +38,10 @@
       "'" 'eshell
       "b" 'ivy-switch-buffer
       "/" 'counsel-git-grep   ; Find a string in the current git project.
-      "TAB" 'switch-to-previous-buffer
+      "TAB" 'my-switch-to-previous-buffer
       "SPC" 'avy-goto-word-or-subword-1
       "ad" 'dired-jump
+      "fy" 'my-put-file-name-on-clipboard
       ;; files
       "f"   '(:ignore t :which-key "files")
       "ff" 'counsel-find-file ; Find a file using Ivy.
@@ -85,8 +86,20 @@
 ;; Some helper functions
 ;; ---------------------
 
-(defun switch-to-previous-buffer ()
+(defun my-switch-to-previous-buffer ()
   "Switch to previously open buffer.
 Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(defun my-put-file-name-on-clipboard ()
+  "Put the current file name on the clipboard"
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (with-temp-buffer
+        (insert filename)
+        (clipboard-kill-region (point-min) (point-max)))
+      (message filename))))
