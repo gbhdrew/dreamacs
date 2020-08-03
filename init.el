@@ -12,6 +12,7 @@
 ;; Load and initialize packages.
 (load-subconfig "packages.el")
 
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 ;; use sbcl as Common Lisp implementation:
 (setq inferior-lisp-program "sbcl")
 
@@ -51,6 +52,7 @@
 
 ;; Registers
 (set-register ?e (cons 'file config-dir))
+(set-register ?l (cons 'file "~/sync/code/lisp"))
 
 ;; Start a server
 (server-start)
