@@ -83,6 +83,9 @@
 ;; Use prettier, for typescript auto-formatting.
 (use-package prettier :ensure t)
 
+;; Add support for org-mode
+(use-package org :ensure t)
+
 ;; Some helper functions
 ;; ---------------------
 
