@@ -62,6 +62,10 @@
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome")
 
+;; open org-mode links in the same frame
+(setq org-link-frame-setup '((file . find-file)))
+
+
 
 ;; Don't edit below this line:
 ;; ---------------------------
@@ -74,7 +78,8 @@
  '(custom-safe-themes
    (quote
     ("f3f85a358dc6c3642bc6e0ca335c8909a2210814e5a7d4301993822bbf7db4e6" default)))
- '(package-selected-packages (quote (prettier use-package general bind-key))))
+ '(package-selected-packages (quote (shell-pop prettier use-package general bind-key)))
+ '(shell-pop-shell-type (quote ("eshell" "*eshell*" (lambda nil (eshell))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

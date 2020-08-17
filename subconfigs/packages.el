@@ -35,7 +35,7 @@
     "M-x" 'counsel-M-x        ; Replace the default M-x with ivy backend.
     :prefix "SPC"
     :non-normal-prefix "C-SPC"
-      "'" 'eshell
+      "'" 'shell-pop
       "b" 'ivy-switch-buffer
       "/" 'counsel-git-grep   ; Find a string in the current git project.
       "TAB" 'my-switch-to-previous-buffer
@@ -51,6 +51,8 @@
       "pf" 'counsel-git     
       ;; magit
       "gs" 'magit-status-here
+      ;; tide (typescript)
+      "hf" 'tide-jump-to-definition
   ))
 
 (use-package which-key :ensure t)
@@ -69,9 +71,16 @@
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
   (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
 
-;; Typescript support with Tide, and company auto-completion
-(use-package tide :ensure t)
+;; Typescript support with Tide, flycheck syntax checking, and company auto-completion
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook ((typescript-mode . tide-setup)
+	 (typescript-mode . tide-hl-identifier-mode)))
 (use-package company :ensure t)
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
 
 ;; library to ensure environment variables inside Emacs
 ;; look the same as in the user's shell.
@@ -86,6 +95,14 @@
 ;; Add support for org-mode
 (use-package org :ensure t)
 
+;; graphql support
+(use-package graphql-mode :ensure t)
+
+;; pop-up shell.
+;; Use M-x customize-variable RET `shell-pop-shell-type' RET to
+;; customize the shell to use.
+(use-package shell-pop :ensure t)
+
 ;; Some helper functions
 ;; ---------------------
 
@@ -96,7 +113,7 @@ Repeated invocations toggle between the two most recently open buffers."
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 (defun my-put-file-name-on-clipboard ()
-  "Put the current file name on the clipboard"
+  "Put the current file name on the clipboard."
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
