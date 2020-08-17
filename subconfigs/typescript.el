@@ -1,4 +1,4 @@
-;; Typescript config with tide and company-mode (installed separately).
+;; Typescript config with tide and company-mode.
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -27,13 +27,10 @@
 
 ;; Activate prettier when using typescript-mode.
 (add-hook 'typescript-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook #'(lambda ()
-                            (enable-minor-mode
-                             '("\\.tsx?\\'" . prettier-js-mode))))
 
 ;; Use prettier before-safe-hook for typescript-mode.
 (defun typescript-prettier-on-save()
-  "Run prettier formatting for typescript-mode on save"
+  "Run prettier formatting for typescript-mode on save."
   (when (eq major-mode 'typescript-mode)) (prettier-prettify))
 
 (add-hook 'before-save-hook 'typescript-prettier-on-save)

@@ -90,7 +90,7 @@
 (use-package web-mode :ensure t)
 
 ;; Use prettier, for typescript auto-formatting.
-(use-package prettier :ensure t)
+(use-package prettier-js :ensure t)
 
 ;; Add support for org-mode
 (use-package org :ensure t)
@@ -102,6 +102,12 @@
 ;; Use M-x customize-variable RET `shell-pop-shell-type' RET to
 ;; customize the shell to use.
 (use-package shell-pop :ensure t)
+
+;; auto-completion
+(use-package auto-complete :ensure t)
+
+;; JSX support
+(use-package rjsx-mode :ensure t)
 
 ;; Some helper functions
 ;; ---------------------
