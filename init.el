@@ -65,8 +65,6 @@
 ;; open org-mode links in the same frame
 (setq org-link-frame-setup '((file . find-file)))
 
-
-
 ;; Don't edit below this line:
 ;; ---------------------------
 

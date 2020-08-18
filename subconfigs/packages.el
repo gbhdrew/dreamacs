@@ -15,8 +15,14 @@
 (require 'use-package)
  
 ;; Counsel comes with Ivy and provides some useful commands,
-;; such as counsel-M-x and counsel-find-file. 
-(use-package counsel :ensure t)
+;; such as counsel-M-x and counsel-find-file.
+(global-set-key (kbd "C-k") 'previous-line)
+(global-set-key (kbd "C-j") 'next-line)
+(use-package counsel :ensure t
+  :config
+  (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+  )
 
 ;; Add magit
 (use-package magit :ensure t)
@@ -28,11 +34,9 @@
 ;; Use the 'general' package to assign keybindings.
 (use-package general :ensure t
   :config
-  (general-define-key 
+  (general-define-key
     :states '(normal visual insert emacs)
     :keymaps 'override
-    "C-s" 'swiper             ; Search for a string in the current buffer.
-    "M-x" 'counsel-M-x        ; Replace the default M-x with ivy backend.
     :prefix "SPC"
     :non-normal-prefix "C-SPC"
       "'" 'shell-pop
@@ -48,13 +52,18 @@
       "fr" 'counsel-recentf   ; Find recently-edited files.
       ;; projects
       "p"   '(:ignore t :which-key "project")
-      "pf" 'counsel-git     
+      "pf" 'counsel-git
       ;; magit
       "gs" 'magit-status-here
       ;; tide (typescript)
       "hf" 'tide-jump-to-definition
+      "gc" 'comment-region
   ))
 
+(general-define-key
+      "C-s" 'swiper             ; Search for a string in the current buffer.
+      "M-x" 'counsel-M-x)       ; Replace the default M-x with ivy backend.
+ 
 (use-package which-key :ensure t)
 
 (use-package avy :ensure t
