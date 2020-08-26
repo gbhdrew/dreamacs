@@ -55,7 +55,7 @@
 ;; work org file (not in this repo)
 (set-register ?l (cons 'file "~/sync/orgs/lb.org"))
 
-;; Start a server
+;; Start a server on launch
 (server-start)
 
 ;; set chrome as default browser for external links

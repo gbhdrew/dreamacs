@@ -21,8 +21,7 @@
 (use-package counsel :ensure t
   :config
   (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
-  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
-  )
+  (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line))
 
 ;; Add magit
 (use-package magit :ensure t)
@@ -58,6 +57,8 @@
       ;; tide (typescript)
       "hf" 'tide-jump-to-definition
       "gc" 'comment-region
+      "ti" 'tide-fix
+      "ev" 'eval-buffer
   ))
 
 (general-define-key
@@ -71,7 +72,7 @@
   :commands (avy-goto-word-1))
 
 ;; add SLIME repl for Lisp
-(use-package slime :ensure t)
+;; (use-package slime :ensure t)
 
 ;; Display dired subtrees with tab key
 (use-package dired-subtree :ensure t
